@@ -2,23 +2,38 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
-import { ProductsComponent } from './products/products.component';
+
 import { FairsComponent } from './fairs/fairs.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
+import { ProductsDashboardComponent } from './products-dashboard/products-dashboard.component';
+import { ProductsFormComponent } from './products-dashboard/products-form/products-form.component';
+import { ProductsDetailsComponent } from './products-dashboard/products-details/products-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/addUser', component: UserFormComponent },
-  { path: 'users/:userId', component: UserDetailsComponent },
-  { path: 'users/:userId/edit', component: UserFormComponent },
-  { path: 'products', component: ProductsComponent },
+  {
+    path: 'users', component: UsersComponent, title:'users', children: [
+      { path: 'addUser', component: UserFormComponent },
+      { path: ':userId', component: UserDetailsComponent },
+      { path: ':userId/edit', component: UserFormComponent },
+    ]
+  },
+  // { path: 'users/addUser', component: UserFormComponent },
+  // { path: 'users/:userId', component: UserDetailsComponent },
+  // { path: 'users/:userId/edit', component: UserFormComponent },
+  { path: 'products', component: ProductsDashboardComponent },
+  { path: 'products/addProduct', component: ProductsFormComponent },
+  { path: 'products/:id', component: ProductsDetailsComponent },
+  { path: 'products/:id/edit', component: ProductsFormComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'fairs', component: FairsComponent },
+  { path: 'page-not-found', title:'page-not-found', component: PageNotFoundComponent },
+  { path:'**', redirectTo: 'page-not-found' }
 ];
 
 @NgModule({

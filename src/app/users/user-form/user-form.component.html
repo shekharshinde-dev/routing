@@ -1,7 +1,6 @@
-<app-back-button></app-back-button>
 <h4 class="text-primary text-center fw-bold">{{isEditMode ? 'Update User' : 'Add User'}}</h4>
 <div class="row d-flex justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <div class="card shadow-sm h-100 border-0 rounded-4 p-4">
             <form [formGroup]="userForm">
                 <div class="form-group">
@@ -18,7 +17,7 @@
                 </div>
                 <div>
                     <button mat-raised-button color="primary" class="mr-2" type="submit"
-                        *ngIf="isEditMode" (click)="onUpdate()">Update</button>
+                        *ngIf="isEditMode" (click)="onUpdate()"[disabled]="updateBtnFlag" >Update</button>
                     <button mat-raised-button color="primary" class="mr-2" type="button" *ngIf="!isEditMode"
                         (click)="addUser()">Add</button>
                     <button mat-raised-button color="warn" type="button">Remove</button>

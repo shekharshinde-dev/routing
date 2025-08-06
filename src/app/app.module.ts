@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
-import { ProductsComponent } from './products/products.component';
 import { FairsComponent } from './fairs/fairs.component';
 import { AdminComponent } from './admin/admin.component';
 import { MaterialModule } from './shared/Module/material.module';
@@ -16,19 +15,26 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { GetConfirmComponent } from './get-confirm/get-confirm.component';
+import { ProductsDashboardComponent } from './products-dashboard/products-dashboard.component';
+import { ProductsDetailsComponent } from './products-dashboard/products-details/products-details.component';
+import { ProductsFormComponent } from './products-dashboard/products-form/products-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UsersComponent,
-    ProductsComponent,
     FairsComponent,
     AdminComponent,
     UserDetailsComponent,
     UserFormComponent,
     BackButtonComponent,
-    GetConfirmComponent
+    GetConfirmComponent,
+    ProductsDashboardComponent,
+    ProductsDetailsComponent,
+    ProductsFormComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

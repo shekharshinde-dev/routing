@@ -18,7 +18,7 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getParam()
-
+    this.onLoad()
   }
 
   getParam() {
@@ -53,6 +53,21 @@ export class UserDetailsComponent implements OnInit {
       this._router.navigate(['users'])
       }
       
+    })
+  }
+  onLoad(){
+    this._activatedRoute.params.subscribe(param =>{
+      console.log(param)
+      this.userId = param['userId']
+      if(this.userId){
+        this._userServ.fetchUserDetails(this.userId).subscribe({
+          next : (data) => {
+            this.userInfo = data
+          },
+          error : err => console.log(err)
+          
+        })
+      }
     })
   }
 

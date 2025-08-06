@@ -18,12 +18,20 @@ export class UserFormComponent implements OnInit {
   userId !: string;
   userForm!: FormGroup;
   editUSer !: Users;
+  userRole !: string;
+  updateBtnFlag  : boolean = false;
 
   constructor(private _activeRouter: ActivatedRoute, private _userServ: UsersService, private _uuIdSev: UuidService, private _router: Router,private _matDialog:MatDialog) { }
   ngOnInit(): void {
-    this.createUserForm()
-    this.getUserParam()
+    this.createUserForm();
+    this.getUserParam();
+    
+    this.userRole = this._activeRouter.snapshot.queryParams['userRole']
 
+    if(this.userRole && this.userRole === "Candidate"){
+      this.userForm.disable()
+      this.updateBtnFlag = true
+    }
   }
   getUserParam() {
     this.userId = this._activeRouter.snapshot.params['userId']

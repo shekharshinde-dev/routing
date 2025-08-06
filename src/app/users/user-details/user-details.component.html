@@ -1,18 +1,20 @@
-<app-back-button></app-back-button>
-<div class="col-md-4">
-    <div class="card mt-4">
-        <div class="card-body">
-            <h4>{{userInfo.userName}}</h4>
-            <p>The User role is {{userInfo.userRole}}</p>
-            <div>
-                <button class="btn btn-sm btn-primary mr-2" routerLink="edit">Edit</button>
-                <!-- <button class="btn btn-sm btn-primary mr-2" [routerLink]="['/users',userId,'edit']">Edit</button> -->
-                <button class="btn btn-sm btn-danger" (click)="onRemove()">Remove</button>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4>{{userInfo.userName}}</h4>
+                <p>The User role is {{userInfo.userRole}}</p>
+                <div>
+                    <button class="btn btn-sm btn-primary mr-2" routerLink="edit" [queryParamsHandling]="'preserve'">Edit</button>
+                    <!-- <button class="btn btn-sm btn-primary mr-2" [routerLink]="['/users',userId,'edit']">Edit</button> -->
+                    <button class="btn btn-sm btn-danger" (click)="onRemove()">Remove</button>
+                </div>
             </div>
         </div>
-
     </div>
+         <button mat-raised-button color="primary" type="button" class="mt-4 ml-3" (click)="onLoad()" routerLink="/users/123">Load Jhon</button>
 </div>
+
 <ng-template #noUserDetails>
     <p class="alert alert-info">No User Avaliable</p>
 </ng-template>

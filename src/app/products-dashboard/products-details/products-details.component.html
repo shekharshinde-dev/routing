@@ -1,0 +1,34 @@
+<div class="row justify-content-center mt-4">
+    <app-back-button></app-back-button>
+    <div class="col-md-6 ">
+        <mat-card class="mat-fixed-card">
+            <mat-card-header>
+                <img mat-card-image [src]="prodInfo.imageUrl" [alt]="prodInfo.imageUrl">
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-card-title class="text-primary mt-2">{{prodInfo.name}}</mat-card-title>
+                <mat-card-subtitle>{{prodInfo.brand}}</mat-card-subtitle>
+                <p class="fw-bold">
+                    {{prodInfo.price | currency : 'INR'}} {{prodInfo.discount}} %
+                </p>
+                <p>Rating : {{prodInfo.rating}}</p>
+                <p>Stock Remaning : {{prodInfo.stock}}</p>
+                <p>Product Des : {{prodInfo.description}}</p>
+                <p>Product Status :{{prodInfo.status}}</p>
+            </mat-card-content>
+            <mat-card-actions class="justify-content-center mb-3">
+                <!-- <button mat-raised-button color="primary" class="mr-2" routerLink="edit" [queryParamsHandling]="'preserve'"> -->
+                    <button mat-raised-button color="primary" class="mr-2"  (click)="onEditNavigate()">
+                    <mat-icon>edit</mat-icon> Edit
+                </button>
+                 <button mat-raised-button color="warn" class="mr-2" (click)="onRemove(prodInfo.id)">
+                    <mat-icon>delete</mat-icon> Remove
+                </button>
+            </mat-card-actions>
+           
+        </mat-card>
+         
+    </div>
+    <button mat-raised-button color="primary" routerLink="/products/P1001">load product id P1001 </button>
+</div>

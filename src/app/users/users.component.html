@@ -1,18 +1,26 @@
 <div class="container">
-    <div class="row d-flex justify-content-center mt-5">
-        <div class="col-md-6">
+     <div class="col mt-4">
+                <button mat-raised-button color="primary" routerLink="/users/addUser">Add User</button>
+            </div>
+    <div class="row">
+        <div class="col-md-6 mt-4">
             <mat-card class="example-card" *ngIf="userData.length > 0;else noUserDetails">
                 <mat-card-content>
                     <mat-list role="list" class="list-group">
-                        <mat-list-item role="listitem" class="list-group-item" *ngFor="let user of userData" [routerLink]="[user.userId]">{{user.userName}}</mat-list-item>
+                        <mat-list-item role="listitem" class="list-group-item" *ngFor="let user of userData"
+                            [routerLink]="[user.userId]"  [queryParams]="{ userRole : user.userRole}">{{user.userName}} {{user.userRole}}
+                           
+                        </mat-list-item>
                     </mat-list>
                 </mat-card-content>
             </mat-card>
         </div>
-        <div class="col-md-4">
-            <button mat-raised-button color="primary" routerLink="/users/addUser">Add User</button>
+        <div class="col-md-6">
+            <router-outlet></router-outlet>
         </div>
+
     </div>
+
 </div>
 <ng-template #noUserDetails>
     <p class="alert alert-info">No User Avaliable</p>
