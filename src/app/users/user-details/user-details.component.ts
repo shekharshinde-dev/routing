@@ -46,6 +46,7 @@ export class UserDetailsComponent implements OnInit {
     matDialogConfig.width = "700px";
     matDialogConfig.maxWidth = "90%";
     matDialogConfig.disableClose = true;
+    matDialogConfig.data = `Are You sure, You want to Remove ${this.userInfo.userName}`
     let matDialogRef = this._matDialog.open(GetConfirmComponent, matDialogConfig)
     matDialogRef.afterClosed().subscribe((res)=>{
       if(res){
