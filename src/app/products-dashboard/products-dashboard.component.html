@@ -1,7 +1,9 @@
 <div class="container">
-    <div class="col-md-3">
-            <button mat-raised-button color="primary" class="justify-content-center mt-5" routerLink="addProduct">Add Product</button>
-        </div>
+    <div class="col">
+        <div class="col-md-3">
+        <button mat-raised-button color="primary" class="justify-content-center mt-5" routerLink="addProduct">Add
+            Product</button>
+    </div>
     <div class="row mt-4">
         <div class="col-md-3" *ngFor="let product of productArr">
             <mat-card class="mat-fixed-card mb-3 shadow-sm border">
@@ -16,12 +18,17 @@
                     </p>
                 </mat-card-content>
                 <mat-card-actions class="justify-content-center mb-2">
-                    <button mat-raised-button color="primary" class="mr-2" [routerLink]="product.id" [queryParams]="{role : product.role}">
+                    <button mat-raised-button color="primary" class="mr-2" [routerLink]="product.id"
+                        [queryParams]="{role : product.role}">
                         <mat-icon>shopping_cart</mat-icon> Buy
                     </button>
                 </mat-card-actions>
             </mat-card>
         </div>
-        
+    </div>
     </div>
 </div>
+ <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+

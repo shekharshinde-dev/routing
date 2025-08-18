@@ -19,6 +19,8 @@ import { ProductsDashboardComponent } from './products-dashboard/products-dashbo
 import { ProductsDetailsComponent } from './products-dashboard/products-details/products-details.component';
 import { ProductsFormComponent } from './products-dashboard/products-form/products-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ProductsDashboardComponent,
     ProductsDetailsComponent,
     ProductsFormComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

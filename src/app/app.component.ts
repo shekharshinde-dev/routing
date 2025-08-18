@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './shared/services/guard/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'routing';
+  constructor(private _router:Router){}
+  onLogOut(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('userRole') 
+    this._router.navigate([''])
+  }
 }
