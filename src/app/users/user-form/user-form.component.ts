@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { IcanDeactivate } from 'src/app/shared/model/canDeactivate.model';
 import { Users } from 'src/app/shared/model/user.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { UuidService } from 'src/app/shared/services/uuid.service';
@@ -11,7 +13,7 @@ import { UuidService } from 'src/app/shared/services/uuid.service';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, IcanDeactivate {
 
   // if activeUrl has Id? isEditMode = true : isEditMode =false
   isEditMode: boolean = false;
@@ -19,16 +21,16 @@ export class UserFormComponent implements OnInit {
   userForm!: FormGroup;
   editUSer !: Users;
   userRole !: string;
-  updateBtnFlag  : boolean = false;
+  updateBtnFlag: boolean = false;
 
-  constructor(private _activeRouter: ActivatedRoute, private _userServ: UsersService, private _uuIdSev: UuidService, private _router: Router,private _matDialog:MatDialog) { }
+  constructor(private _activeRouter: ActivatedRoute, private _userServ: UsersService, private _uuIdSev: UuidService, private _router: Router, private _matDialog: MatDialog) { }
   ngOnInit(): void {
     this.createUserForm();
     this.getUserParam();
-    
+
     this.userRole = this._activeRouter.snapshot.queryParams['userRole']
 
-    if(this.userRole && this.userRole === "Candidate"){
+    if (this.userRole && this.userRole === "Candidate") {
       this.userForm.disable()
       this.updateBtnFlag = true
     }
@@ -77,13 +79,28 @@ export class UserFormComponent implements OnInit {
         userId: this.userId
       }
       console.log(UPDATED_USER);
-      this.userForm.reset( )
+      this.userForm.reset()
       this._userServ.updateUser(UPDATED_USER)
       this._router.navigate(['users'])
+      this.isEditMode = false
     }
 
 
   }
 
+  canDeactivate() {
 
+
+    //if form is edited and not submiiteed
+    //return false
+
+
+    //if form is dirty but updated
+    // return true
+    if (this.userForm.dirty && this.isEditMode) {
+      let getConfirm = confirm('Are you sure you want to descard the changes')
+      return getConfirm
+    }
+    return true
+  }
 }

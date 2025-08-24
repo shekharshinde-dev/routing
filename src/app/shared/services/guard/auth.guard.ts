@@ -7,7 +7,7 @@ import { AuthService } from "./auth.service";
 @Injectable({
     providedIn : 'root'
 })
-export class AuthGaurd implements CanActivate ,CanActivateChild{
+export class AuthGuard implements CanActivate ,CanActivateChild{
 
     constructor(private _authServ : AuthService,private _router:Router){}
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean |UrlTree {
